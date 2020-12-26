@@ -78,6 +78,7 @@
       this.$refs.list.$el.style.top = `${this.imageHeight}px`
     },
     methods: {
+      // 底部播放器的高度偏移实现
       handlePlaylist(playlist) {
         const bottom = playlist.length > 0 ? '60px' : ''
         this.$refs.list.$el.style.bottom = bottom

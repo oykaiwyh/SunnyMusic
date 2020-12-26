@@ -32,6 +32,24 @@ const SingerDetail = (resolve) => {
   })
 }
 
+const Disc = (resolve) => {
+  import('components/disc/disc').then((module) => {
+    resolve(module)
+  })
+}
+
+// const TopList = (resolve) => {
+//   import('components/top-list/top-list').then((module) => {
+//     resolve(module)
+//   })
+// }
+
+// const UserCenter = (resolve) => {
+//   import('components/user-center/user-center').then((module) => {
+//     resolve(module)
+//   })
+// }
+
 export default new Router({
   routes: [
     {
@@ -40,7 +58,13 @@ export default new Router({
     },
     {
       path: '/recommend',
-      component: Recommend
+      component: Recommend,
+      children: [
+        {
+          path: ':id',
+          component: Disc
+        }
+      ]
     },
     {
       path: '/singer',

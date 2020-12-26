@@ -1,3 +1,4 @@
+import jsonp from './jsonp'
 export default class Singer {
   constructor({id, name}) {
     this.id = id

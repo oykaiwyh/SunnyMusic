@@ -8,14 +8,18 @@
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "lint": "eslint --ext .js,.vue src",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "create-keyframe-animation": "^0.1.0"
   },
   "dependencies": {
     "axios": "^0.21.0",
     "babel-runtime": "^6.6.0",
     "better-scroll": "0.1.15",
+    "create-keyframe-animation": "^0.1.0",
     "fastclick": "1.0.6",
+    "js-base64": "^2.1.9",
     "jsonp": "0.2.1",
+    "lyric-parser": "^1.0.1",
     "vue": "^2.5.2",
     "vue-lazyload": "1.0.3",
     "vue-router": "^3.0.1",

@@ -1,5 +1,5 @@
 
-import 'babel-polyfill' // es高级语法转译
+import 'babel-polyfill' // es高级语法转译 IE的兼容
 
 import Vue from 'vue'
 import App from './App'
