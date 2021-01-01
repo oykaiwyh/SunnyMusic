@@ -10,10 +10,15 @@ import fastclick from 'fastclick'
 import VueLazyload from 'vue-lazyload'
 
 import store from '@/store'
+// 移动端调试插件
+// eslint-disable-next-line no-unused-vars
+import vConsole from 'vconsole'
+
 fastclick.attach(document.body) // 点击都有300ms的延迟
 Vue.use(VueLazyload, {
   loading: require('common/image/default.png')
 })
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

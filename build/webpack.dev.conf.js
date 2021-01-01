@@ -51,6 +51,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app){
+      // 歌单的跨域问题
       app.get('/api/getDiscList', function (req, res) {
         var url = 'https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_by_tag.fcg'
         axios.get(url, {
@@ -65,7 +66,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
           console.log(e)
         })
       })
-
+      // 歌词的跨域问题
       app.get('/api/lyric', function (req, res) {
         var url = 'https://c.y.qq.com/lyric/fcgi-bin/fcg_query_lyric_new.fcg'
       
@@ -90,7 +91,62 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         })
       })
 
+      // 歌单中歌曲的列表
+      app.get('/api/DiscSongs', function (req, res) {
+        var url = 'https://c.y.qq.com/qzone/fcg-bin/fcg_ucc_getcdinfo_byids_cp.fcg'
+      
+        axios.get(url, {
+          headers: {
+            referer: 'https://c.y.qq.com/',
+            host: 'c.y.qq.com'
+          },
+          params: req.query
+        }).then((response) => {
+          // console.log('/api/DiscSongs',response)
+          // return Promise.resolve(response.data)
+          res.json(response.data)
+        }).catch((e) => {
+          console.log(e)
+        })
+      })
 
+      // 排行榜列表
+      app.get('/api/getTopList', function (req, res) {
+        var url = 'https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg'
+      
+        axios.get(url, {
+          headers: {
+            referer: 'https://c.y.qq.com/',
+            host: 'c.y.qq.com'
+          },
+          params: req.query
+        }).then((response) => {
+          // console.log('/api/DiscSongs',response)
+          // return Promise.resolve(response.data)
+          res.json(response.data)
+        }).catch((e) => {
+          console.log(e)
+        })
+      })
+
+      // 搜索
+      app.get('/api/search', function (req, res) {
+        var url = 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp'
+      
+        axios.get(url, {
+          headers: {
+            referer: 'https://c.y.qq.com/',
+            host: 'c.y.qq.com'
+          },
+          params: req.query
+        }).then((response) => {
+          // console.log('/api/DiscSongs',response)
+          // return Promise.resolve(response.data)
+          res.json(response.data)
+        }).catch((e) => {
+          console.log(e)
+        })
+      })
 
 
     }

@@ -30,9 +30,6 @@ export default class Song {
           })
         })
       }
-
-
-
 }
 
 export function createSong(musicData) {
@@ -46,7 +43,7 @@ export function createSong(musicData) {
       image: `https://y.gtimg.cn/music/photo_new/T002R300x300M000${musicData.albummid}.jpg?max_age=2592000`,
     //   url: `http://ws.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=46`
     //   url: `https://isure.stream.qqmusic.qq.com/${musicData.songid}.m4a?fromtag=3`
-        url:''
+        url: ''
     })
 }
 function filterSinger(singer) {
@@ -61,7 +58,7 @@ function filterSinger(singer) {
 }
 
 const commonParams = {
-    '-':'getplaysongvkey5843183656767885',
+    '-': 'getplaysongvkey5843183656767885',
     g_tk: '409610277',
     sign: 'zzav1bowekzcom9f7275a651eab15d16e2cff455f7d09d',
     format: 'json',
@@ -81,14 +78,14 @@ function getPlaySongKey(mid) {
     return jsonp(url, data, '')
 }
   // 这一段代码为的是拼接出正确参数，promise方法。你也可以不用这段代码。看你个人水平了。这是promise应答
-  //如果不用这段代码，你直接使用getPlaySongKey，然后通过then(res => {这里是拼接参数的方法}）也可以。
-export  function getSongUrl(mid) {
+  // 如果不用这段代码，你直接使用getPlaySongKey，然后通过then(res => {这里是拼接参数的方法}）也可以。
+export function getSongUrl(mid) {
     return getPlaySongKey(mid).then(res => {
         if (res.code === 0) {
-            const purl = res.req_0.data.midurlinfo[0].purl
-            const host = res.req_0.data.sip[0]
+            const purl = res.req_0.data.midurlinfo[0].purl || ''
+            const host = res.req_0.data.sip[0] || ''
             // return Promise.resolve({code: 0, url: host + purl})
-            return Promise.resolve({url:`${host}${purl}`})
+            return Promise.resolve({url: `${host}${purl}`})
         }
     })
 }

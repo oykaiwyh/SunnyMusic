@@ -30,6 +30,7 @@
         <loading></loading>
       </div>
     </scroll>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -97,7 +98,8 @@
           this.$refs.scroll.refresh()
         }
       },
-      selectItem(item){
+      selectItem(item) {
+        console.log('item.dissid', item.dissid)
         this.$router.push({
           path: `/recommend/${item.dissid}`
         })
